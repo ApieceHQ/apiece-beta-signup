@@ -11,7 +11,16 @@ const inter = Inter({
 const title = "Apiece — A place for curation";
 const description = "Collect anything. Curate everywhere. Apply for early access to Apiece.";
 
+// Used to make OG/Twitter image URLs absolute. Set NEXT_PUBLIC_SITE_URL to the
+// production domain (e.g. https://apiece.co); falls back to the Vercel URL, then localhost.
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000");
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title,
   description,
   openGraph: {

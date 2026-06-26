@@ -1,4 +1,5 @@
 import SignupForm from "./SignupForm";
+import ApieceLogo from "./ApieceLogo";
 
 // Referral keys we care about, in a stable order.
 const REFERRAL_KEYS = [
@@ -36,7 +37,10 @@ export default async function Page({
   return (
     <main className="page">
       <div className="column">
-        <p className="wordmark">Apiece</p>
+        <div className="wordmark">
+          <ApieceLogo size={30} />
+          <span className="wordmark-text">Apiece</span>
+        </div>
 
         <div className="hero">
           <h1 className="headline">A place for curation</h1>

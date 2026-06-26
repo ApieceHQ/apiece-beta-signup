@@ -106,9 +106,11 @@ export default function SignupForm({ referral }: { referral: string }) {
 
       <div className="field">
         <label className="label" htmlFor="url-0">
-          Where do you curate today?{" "}
-          <span className="optional">(optional)</span>
+          Where do you curate today?
         </label>
+        <p className="hint" id="url-hint">
+          Paste a link <span className="optional">(optional)</span>
+        </p>
         <div className="urls">
           {urls.map((url, i) => (
             <div className="urlRow" key={i}>
@@ -119,17 +121,18 @@ export default function SignupForm({ referral }: { referral: string }) {
                 className="input"
                 inputMode="url"
                 autoComplete="off"
-                placeholder="Substack, Spotify profile, IG, your site…"
+                placeholder="https://…"
                 value={url}
                 onChange={(e) => updateUrl(i, e.target.value)}
                 aria-label={`Audience channel ${i + 1}`}
+                aria-describedby="url-hint"
               />
-              {urls.length > 1 && (
+              {i > 0 && (
                 <button
                   type="button"
                   className="removeBtn"
                   onClick={() => removeUrl(i)}
-                  aria-label={`Remove channel ${i + 1}`}
+                  aria-label={`Remove link ${i + 1}`}
                 >
                   ✕
                 </button>
@@ -137,8 +140,13 @@ export default function SignupForm({ referral }: { referral: string }) {
             </div>
           ))}
         </div>
-        <button type="button" className="addBtn" onClick={addUrl}>
-          Add another
+        <button
+          type="button"
+          className="addBtn"
+          onClick={addUrl}
+          aria-label="Add another link"
+        >
+          +
         </button>
       </div>
 
