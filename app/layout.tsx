@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import Footer from "./Footer";
 import "./globals.css";
 
 const inter = Inter({
@@ -21,7 +22,12 @@ const siteUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title,
+  // Home keeps the full default title; interior pages set just their name
+  // (e.g. "About") and render as "About — Apiece".
+  title: {
+    default: title,
+    template: "%s — Apiece",
+  },
   description,
   openGraph: {
     title,
@@ -47,7 +53,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

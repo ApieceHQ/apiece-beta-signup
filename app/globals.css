@@ -9,6 +9,7 @@
   --radius: 0.625rem;     /* 10px */
 
   --maxw: 30rem;          /* content column */
+  --maxw-doc: 36rem;      /* reading column — About/Contact/Privacy/Terms */
 }
 
 * {
@@ -36,6 +37,13 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Column so the footer can pin to the viewport bottom on short pages.
+     Home's .page still claims a full 100svh, so its footer falls below the
+     fold and the one-screen layout is untouched. */
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
 }
 
 /* ---- Page shell: one centered screen, no scroll required ---- */
@@ -314,4 +322,210 @@ body {
   font-size: 1rem;
   margin: 0;
   color: var(--muted-fg);
+}
+
+/* ---- Content pages: About / Contact / Privacy / Terms ---- */
+.doc {
+  width: 100%;
+  max-width: var(--maxw-doc);
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.5rem;
+}
+
+/* Wordmark at top doubles as the way back to Home — the only nav besides the footer */
+.doc-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px; /* matches the Home lockup */
+  text-decoration: none;
+  border-radius: var(--radius);
+}
+
+.doc-home:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(35, 50, 79, 0.25);
+}
+
+.doc-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.doc-title {
+  font-weight: 600;
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--primary);
+}
+
+/* Legal pages: quieter title, since the prose is the point */
+.doc-title--legal {
+  font-size: clamp(1.5rem, 4vw, 1.75rem);
+}
+
+.doc-meta {
+  font-size: 0.875rem;
+  color: var(--muted-fg);
+  margin: 0;
+}
+
+.doc-p {
+  font-weight: 400;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--primary);
+}
+
+.doc-p strong {
+  font-weight: 500;
+}
+
+/* Legal prose sits a touch smaller and softer than editorial copy */
+.doc-p--legal {
+  font-size: 1rem;
+  color: var(--muted-fg);
+}
+
+.doc-p--legal strong {
+  color: var(--primary);
+}
+
+.doc-link {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-color: rgba(35, 50, 79, 0.3);
+  transition: text-decoration-color 0.15s ease;
+  border-radius: 2px;
+}
+
+.doc-link:hover {
+  text-decoration-color: var(--primary);
+}
+
+.doc-link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(35, 50, 79, 0.25);
+}
+
+/* Divider above the founder credit */
+.doc-rule {
+  width: 100%;
+  height: 1px;
+  border: 0;
+  background: var(--border);
+  margin: 0;
+}
+
+.doc-credit {
+  font-size: 0.9375rem;
+  color: var(--muted-fg);
+  margin: 0;
+}
+
+/* Ghost CTA — same language as Home's submit button, sized to its text */
+.cta {
+  align-self: flex-start;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  color: var(--primary);
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid var(--primary);
+  border-radius: var(--radius);
+  padding: 0.6875rem 1.5rem;
+  transition: background-color 0.15s ease;
+}
+
+.cta:hover {
+  background: rgba(35, 50, 79, 0.07);
+}
+
+.cta:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(35, 50, 79, 0.25);
+}
+
+/* Contact block */
+.doc-contact {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--primary);
+  margin: 0;
+}
+
+.doc-address {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--muted-fg);
+  margin: 0;
+  font-style: normal;
+}
+
+/* ---- Footer (all pages) ---- */
+.site-footer {
+  /* Pins to the viewport bottom on short pages; inert on Home, which is
+     already a full screen tall. */
+  margin-top: auto;
+  width: 100%;
+  max-width: var(--maxw-doc);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+}
+
+.footer-copy {
+  font-size: 0.8125rem;
+  color: var(--muted-fg);
+  margin: 0;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-nav > :not(:first-child)::before {
+  content: "·";
+  margin-right: 0.5rem;
+  color: var(--muted-fg);
+  opacity: 0.5;
+}
+
+.footer-link {
+  font-size: 0.8125rem;
+  color: var(--muted-fg);
+  text-decoration: none;
+  border-radius: 2px;
+  transition: color 0.15s ease;
+}
+
+a.footer-link:hover {
+  color: var(--primary);
+}
+
+.footer-link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(35, 50, 79, 0.25);
+}
+
+.footer-link.is-current {
+  color: var(--primary);
 }

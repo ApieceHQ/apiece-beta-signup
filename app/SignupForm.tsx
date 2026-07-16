@@ -78,7 +78,7 @@ export default function SignupForm({ referral }: { referral: string }) {
   }
 
   return (
-    <form className="card" onSubmit={handleSubmit} noValidate>
+    <form id="apply" className="card" onSubmit={handleSubmit} noValidate>
       <div className="field">
         <label className="label" htmlFor="email">
           Email
