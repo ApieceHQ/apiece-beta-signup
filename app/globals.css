@@ -48,7 +48,10 @@ body {
 
 /* ---- Page shell: one centered screen, no scroll required ---- */
 .page {
-  min-height: 100svh;
+  /* Fills the space the footer leaves rather than claiming a full 100svh, so
+     content + footer together are one screen. Content stays centered in what's
+     left; grows past the viewport (and scrolls) only if it genuinely can't fit. */
+  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -528,4 +531,29 @@ a.footer-link:hover {
 
 .footer-link.is-current {
   color: var(--primary);
+}
+
+/* Narrow screens: the two halves can't sit side by side, so centre them
+   instead of letting space-between strand them on the left. */
+@media (max-width: 30rem) {
+  .site-footer {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.625rem;
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+/* Short viewports (small phones like the 667px SE, short desktop windows):
+   Home's content is ~611px at its natural minimum, which leaves no room for
+   the footer. Tighten the vertical rhythm just here so both still fit one
+   screen; taller screens keep the generous spacing. */
+@media (max-height: 44rem) {
+  .page {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .column {
+    gap: 1.5rem;
+  }
 }
