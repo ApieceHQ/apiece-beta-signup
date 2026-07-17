@@ -17,28 +17,28 @@ export default function AboutPage() {
       </Link>
 
       <div className="doc-body">
-        <h1 className="doc-title">Some people still choose things.</h1>
+        <h1 className="doc-title">Taste is not evenly distributed.</h1>
 
         <p className="doc-p">
-          Not what the algorithm says. Rather, your friend with great taste, the
-          clerk at the independent record store or bookshop, a writer or DJ you
-          trust.
+          Algorithms simplify choice and often deliver good recommendations. But
+          when options are unlimited and quality is subjective, outstanding human
+          curation is unmatched. Consider your friend with great taste, the clerk
+          at the independent record store or bookshop, a writer or DJ you trust.
         </p>
 
         <p className="doc-p">
-          Curation, taste, whatever you want to call it &mdash; choosing well is
-          a craft that serves others.
+          Curation &mdash; finding the signal in the noise, and giving it context
+          &mdash; is a craft that serves others.
         </p>
 
         <p className="doc-p">
-          <strong>Apiece is built for the people who do that work</strong>{" "}
-          &mdash; those who collect and curate. We offer a place to collect
-          anything and curate everywhere.
+          <strong>Apiece is built for the people who do that work.</strong> We
+          offer a place to collect anything and curate everywhere.
         </p>
 
         <p className="doc-p">
-          <strong>We&rsquo;re in private beta,</strong> building with a small
-          group of early users, iterating on the experience to create something
+          We&rsquo;re in private beta, building with a small group of early
+          customers, iterating on the experience to create something
           you&rsquo;ll love.
         </p>
       </div>
@@ -58,8 +58,8 @@ export default function AboutPage() {
           rel="noopener noreferrer"
         >
           David Porter
-        </a>
-        . Apiece (NYC).
+        </a>{" "}
+        in NYC.
       </p>
     </main>
   );
