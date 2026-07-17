@@ -17,18 +17,21 @@ export default function AboutPage() {
       </Link>
 
       <div className="doc-body">
-        <h1 className="doc-title">Taste is not evenly distributed.</h1>
+        <h1 className="doc-title">
+          A place for people who collect &amp; curate.
+        </h1>
 
         <p className="doc-p">
           Algorithms simplify choice and often deliver good recommendations. But
-          when options are unlimited and quality is subjective, outstanding human
-          curation is unmatched. Consider your friend with great taste, the clerk
-          at the independent record store or bookshop, a writer or DJ you trust.
+          when options are unlimited and quality is subjective, human curation is
+          unmatched. Consider your friend with great taste, the clerk at the
+          independent record store or bookshop, a writer or DJ you trust.
         </p>
 
         <p className="doc-p">
-          Curation &mdash; finding the signal in the noise, and giving it context
-          &mdash; is a craft that serves others.
+          What they offer, no algorithm can. The trusted pick that expands your
+          taste. The context that makes a discovery mean more. The human
+          connection around a shared passion.
         </p>
 
         <p className="doc-p">
